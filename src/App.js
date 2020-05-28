@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { history } from './_helpers';
 import { alertActions } from './_actions';
 import { PrivateRoute } from './_components';
+import { Header } from './_components';
 
 // PAGES
 import { HomePage } from './Homepage';
@@ -36,7 +37,9 @@ function App() {
           {alert.message &&
             <div className={`alert ${alert.type}`}>{alert.message}</div>
           }
+        
           <Router history={history}>
+          <Header></Header>
             <Switch>
               <PrivateRoute exact path="/" component={HomePage} />
               <Route path="/login" component={LoginPage} />
