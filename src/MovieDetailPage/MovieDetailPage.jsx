@@ -13,16 +13,17 @@ function MovieDetailPage(props) {
     const { match } = props;
 
     console.log(match.params.movie_id);
-    const movies = useSelector(state => state.movies);
+    const movie = useSelector(state => state.movies.item);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(movieActions.getAll('', 1));
+        dispatch(movieActions.getById(match.params.movie_id));
     }, [dispatch]);
 
     return (
         <div className="col-lg-8 offset-lg-2">
             <h3>All Movie detail page:</h3>
+            <pre>{JSON.stringify(movie)}</pre>
             <ActorList {...props}></ActorList>
             <RecommendationList {...props}></RecommendationList>
             <ImageList {...props}></ImageList>

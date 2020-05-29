@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import Autocomplete from "./Autocomplete";
 
 import { userActions } from '../_actions';
 
@@ -20,6 +21,9 @@ function Header() {
                 <div>
                     <h1>Hi {user.firstName}!</h1>
                     <p>You're logged in with React Hooks!!</p>
+                    <Autocomplete
+                        suggestions={["White", "Black", "Green", "Blue", "Yellow", "Red"]}
+                    />
                     <p>
                         <Link to="/login">Logout</Link>
                     </p>

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import './App.css';
 
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,17 +7,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { history } from './_helpers';
 import { alertActions } from './_actions';
 import { PrivateRoute } from './_components';
-import { Header } from './_components';
 
-// PAGES
-import { HomePage } from './Homepage';
-import { LoginPage } from './LoginPage';
-import { RegisterPage } from './RegisterPage';
-import { MoviePage } from './MoviesPage';
+// COMPONENTS
+import { Header } from './_components';
+import { Navbar } from './components/Navbar/Navbar';
+
+// CONTAINERS
+import { HomePage } from './containers/Homepage';
+import { LoginPage } from './containers/LoginPage';
+import { RegisterPage } from './containers/RegisterPage';
+import { MoviePage } from './containers/MoviePage';
 import { MovieDetailPage } from './MovieDetailPage';
-import { WatchListPage } from './WatchListPage';
-import { SearchPage } from './SearchPage';
-import { ProfilePage } from './ProfilePage';
+import { WatchList } from './containers/WatchList';
+import { SearchPage } from './containers/SearchPage';
+import { ProfilePage } from './containers/ProfilePage';
 
 
 function App() {
@@ -31,22 +35,23 @@ function App() {
   });
 
   return (
-    <div className="jumbotron">
-      <div className="container">
-        <div className="col-md-8 offset-md-2">
+    <div className="">
+      <div className="">
+        <div className="">
           {alert.message &&
             <div className={`alert ${alert.type}`}>{alert.message}</div>
           }
         
           <Router history={history}>
-          <Header></Header>
+          {/* <Header></Header> */}
+          <Navbar></Navbar>
             <Switch>
               <PrivateRoute exact path="/" component={HomePage} />
               <Route path="/login" component={LoginPage} />
               <Route path="/movie" exact component={MoviePage} />
-              <Route path="/search" exact component={SearchPage} />
+              <Route path="/search/:keyword" exact component={SearchPage} />
               <Route path="/profile" exact component={ProfilePage} />
-              <Route path="/watchlist" exact component={WatchListPage} />
+              <Route path="/watchlist" exact component={WatchList} />
               <Route path="/movie/:movie_id(\d+)" exact component={MovieDetailPage} />
               <Route path="/register" component={RegisterPage} />
               <Redirect from="*" to="/" />

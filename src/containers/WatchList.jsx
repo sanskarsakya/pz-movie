@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { movieActions } from '../_actions';
 
-function MoviePage() {
+function WatchList() {
     const movies = useSelector(state => state.movies);
     const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ function MoviePage() {
 
     return (
         <div className="col-lg-8 offset-lg-2">
-            <h3>All movies:</h3>
+            <h3>All Watchlist:</h3>
             {movies.loading && <em>Loading movies...</em>}
             {movies.error && <span className="text-danger">ERROR: {movies.error}</span>}
             {movies.items &&
@@ -31,4 +31,4 @@ function MoviePage() {
     );
 }
 
-export { MoviePage };
+export { WatchList };
