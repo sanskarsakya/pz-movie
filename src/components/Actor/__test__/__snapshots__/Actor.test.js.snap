@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Actor test suite match actor snapshot 1`] = `
+<div
+  className="w-1/5 p-3 transform hover:-translate-y-2 ease-in-out duration-200 transition-translate"
+  data-testid="actor"
+>
+  <div
+    className="rounded-md overflow-hidden"
+    style={
+      Object {
+        "borderRadius": 20,
+        "height": 200,
+      }
+    }
+  >
+    <img
+      alt=""
+      className="object-cover"
+      src="https://image.tmdb.org/t/p/w185undefined"
+    />
+  </div>
+  <p
+    className="mt-4 text-xl font-semibold cursor-pointer"
+    data-testid="actor_name"
+  >
+    test
+  </p>
+  <div
+    className="mt-1 text-sm tracking-wider flex items-center"
+    style={
+      Object {
+        "color": "rgba(255, 255, 255, 0.8)",
+      }
+    }
+  >
+    <p />
+  </div>
+</div>
+`;

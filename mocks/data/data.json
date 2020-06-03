@@ -1,0 +1,14 @@
+{
+    "watchlist": [
+      {
+        "id":1,
+        "title":"ad astra",
+        "poster_path": "https://image.tmdb.org/t/p/w300/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
+      },
+      {
+        "id":2,
+        "title":"ad astra",
+        "poster_path": "https://image.tmdb.org/t/p/w300/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
+      }
+    ]
+  }
