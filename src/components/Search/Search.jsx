@@ -18,8 +18,8 @@ export const Search = ({  }) => {
     return (
       <div className="relative">
         <input
-          className="rounded border-b text-xs p-2 bg-transparent leading-none border-white"
-          style={{ color: "#8E95A5", width: 280 }}
+          className="border-b text-xs p-2 bg-transparent leading-none border-white"
+          style={{ color: "#8E95A5", width: 200 }}
           type="text"
           placeholder="Enter keyword here"
           onChange={handleChange}

@@ -19,7 +19,8 @@ export const MovieInfo = ({ movie }) => {
 
   function addToWatchList(movie, isInWatchList) {
     if (!user) {
-      history.push('/login')
+      history.push('/login');
+      return;
     }
     if (isInWatchList) {
       dispatch(watchListActions.removeFromWatchList(movie));

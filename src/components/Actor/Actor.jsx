@@ -8,11 +8,15 @@ function Actor({ name, image, character }) {
         style={{ height: 200, borderRadius: 20 }}
       // width:270
       >
-        <img
-          className="object-cover"
-          src={"https://image.tmdb.org/t/p/w185" + image}
-          alt=""
-        />
+        {image ? (
+          <img
+            className="object-cover"
+            src={"https://image.tmdb.org/t/p/w185" + image}
+            alt=""
+          />) : (<div className="w-full h-full flex items-center justify-center"  style={{
+            background:
+                "linear-gradient(180deg, rgba(0, 0, 0, 0.2) 1.53%, rgba(9, 9, 98, 0.8) 100%)"
+        }}>No image</div>)}
       </div>
       <p data-testid="actor_name" className="mt-4 text-xl font-semibold cursor-pointer">{name}</p>
       <div

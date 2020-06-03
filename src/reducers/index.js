@@ -6,7 +6,7 @@ import { users } from './users.reducer';
 import { movies } from './movies.reducer';
 import { alert } from './alert.reducer';
 import { actors } from './actors.reducer';
-import { recommendations } from './recommendations.reducer';
+// import { recommendations } from './recommendations.reducer';
 import { images } from './images.reducer';
 import { watchlist } from './watchLists.reducer';
 import { search } from './search.reducer';
@@ -20,6 +20,7 @@ const rootReducer = combineReducers({
     alert,
     actors,
     recommendations: baseReducer(movies, "Recommendations"),
+    genres: baseReducer(movies, "Genres"),
     images,
     watchlist,
     search,

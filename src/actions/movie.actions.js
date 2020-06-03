@@ -43,7 +43,8 @@ import {
   _getMovie,
   _searchMovies,
   _getActors,
-  _getRecommendations
+  _getRecommendations,
+  _getGenres
 } from "../services/movie.service";
 import { constants } from "../constants";
 import { sliceArray } from "../helpers/util";
@@ -56,7 +57,8 @@ export const movieActions = {
   setSearchText,
   searchMovie,
   resetMovies,
-  getRecommendations
+  getRecommendations,
+  getGenres
 };
 
 function getTrending() {
@@ -195,6 +197,27 @@ function resetMovies() {
 
     function request() {
       return { type: constants.MOVIES_RESET };
+    }
+  };
+}
+
+
+function getGenres() {
+  return dispatch => {
+    dispatch(request());
+
+    _getGenres().then(
+      genres => dispatch(success(genres.data.genres)),
+      error => dispatch(failure(error))
+    );
+    function request() {
+      return { type: constants.SEARCH_REQUEST, name: 'Genres' };
+    }
+    function success(movies) {
+      return { type: constants.SEARCH_SUCCESS, name: 'Genres', movies };
+    }
+    function failure(error) {
+      return { type: constants.SEARCH_FAILURE, name: 'Genres', error };
     }
   };
 }

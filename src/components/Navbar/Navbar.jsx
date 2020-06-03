@@ -10,7 +10,7 @@ export const Navbar = (props) => {
 
 
     return (
-        <div className=" w-full px-10 py-3" style={{ boxShadow: '0 14px 27px #16181e', backgroundColor: '#20209A' }} >
+        <div className=" w-full px-10 py-3 shadow-md" style={{  backgroundColor: '#20209A' }} >
             <div className="flex items-i max-w-6xl mx-auto justify-end">
                 <Link className="mr-3" to={"/movie"}>
                     <p className="text-white cursor-pointer">Home</p>

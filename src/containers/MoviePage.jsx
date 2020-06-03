@@ -30,7 +30,7 @@ export const MoviePage = props => {
       style={{ backgroundColor: "#20209A" }}
     >
       <div className="text-white max-w-6xl mx-auto">
-        <div>
+        {/* <div>
           <svg
             width="24"
             height="24"
@@ -45,7 +45,7 @@ export const MoviePage = props => {
               strokeLinejoin="round"
             />
           </svg>
-        </div>
+        </div> */}
         <Trending trending={trendingItems} />
         <Browse />
 

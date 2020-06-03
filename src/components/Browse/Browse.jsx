@@ -24,6 +24,8 @@ function Browse() {
 
     // SELECTORS
     const { items, error, loading, text } = useSelector(state => state.movies);
+    const { items: genreItems } = useSelector(state => state.genres);
+
     const filteredData = useSelector(state =>
         state.movies ? filterByGenre(state.movies, selectedGenre) : state.movies
     );
@@ -39,6 +41,10 @@ function Browse() {
         fetchMovies(filter, currentPage);
         fetchGenre();
     }, [filter, currentPage]);
+
+    // useEffect(() => {
+    //     fetchGenre();
+    // }, [])
 
     useEffect(() => {
         if (text && text.length > 2) {
@@ -72,8 +78,8 @@ function Browse() {
 
         let data = movies.items
             ? selectedRatingOption === "Highest"
-                ? movies.items.sort(compareHighToLow)
-                : movies.items.sort(compareLowToHigh)
+                ? movies.items.sort(compareLowToHigh)
+                : movies.items.sort(compareHighToLow)
             : [];
 
         return data;
@@ -88,26 +94,28 @@ function Browse() {
     }
 
     function fetchGenre() {
-        setGenre([
-            {
-                id: 28,
-                name: "zcxv"
-            },
-            {
-                id: 12,
-                name: "asdf"
-            },
-            {
-                id: 16,
-                name: "qwer"
-            }
-        ]);
+        console.log('genre')
+        // setGenre([
+        //     {
+        //         id: 28,
+        //         name: "zcxv"
+        //     },
+        //     {
+        //         id: 12,
+        //         name: "asdf"
+        //     },
+        //     {
+        //         id: 16,
+        //         name: "qwer"
+        //     }
+        // ]);
+        dispatch(movieActions.getGenres());
     }
 
     function genreChange(event) {
-        let selected = genre[event.target.selectedIndex].id;
+        let selected = genreItems[event.target.selectedIndex].id;
         setSelectedGenre(selected);
-        // filterByGenre(genre[event.target.selectedIndex].id)
+        // filterByGenre(genreItems[event.target.selectedIndex].id)
     }
 
     function ratingChange(event) {
@@ -145,7 +153,7 @@ function Browse() {
                     <div className="flex">
                         <Search />
                         <Genre
-                            genre={genre}
+                            genre={genreItems}
                             selectedGenre={selectedGenre}
                             genreChange={genreChange}
                         />
