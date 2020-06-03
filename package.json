@@ -2,7 +2,6 @@
   "name": "pz-movie-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000",
   "dependencies": {
     "@brainhubeu/react-carousel": "^1.16.3",
     "@testing-library/jest-dom": "^4.2.4",
