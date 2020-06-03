@@ -42,7 +42,7 @@ export const Trending = ({ title = "Trending", trending, showMore = false }) => 
                                 .map((movie, index) => (
                                     <Card
                                         key={movie.id}
-                                        isCarousel={false}
+                                        isCarousel={true}
                                         id={movie.id}
                                         name={movie.title}
                                         image={movie.poster_path}
