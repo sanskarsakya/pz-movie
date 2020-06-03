@@ -2,9 +2,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Card({ id, name, image, vote_average, popularity, year }) {
+function Card({ id, name, image, vote_average, popularity, year, isCarousel = false }) {
   return (
-    <div className="w-1/5 p-3 transform hover:-translate-y-2 ease-in-out duration-200 transition-translate">
+    <div style={isCarousel ? {} : { width: 270 }} className={`${isCarousel ? "" : "w-1/5"} p-3 transform hover:-translate-y-2 ease-in-out duration-200 transition-translate`}>
       <div
         className="overflow-hidden"
         style={{ height: 200, borderRadius: 20 }}
@@ -21,7 +21,7 @@ function Card({ id, name, image, vote_average, popularity, year }) {
           }}>No image</div>)}
       </div>
       <Link to={"/movie/" + id}>
-        <p data-testid="movie_name" className="mt-5 text-xl font-semibold cursor-pointer">{name}</p>
+        <p data-testid="movie_name" className="mt-5 text-xl font-semibold cursor-pointer truncate">{name}</p>
       </Link>
       <div
         className="mt-1 text-sm tracking-wider flex items-center"

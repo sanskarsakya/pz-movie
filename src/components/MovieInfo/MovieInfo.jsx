@@ -56,10 +56,19 @@ export const MovieInfo = ({ movie }) => {
 
         <div className="ml-10">
           <h1 className="font-bold text-5xl">{movie.title}</h1>
+          <p className="mt-1 font-semibold text-lg max-w-xl">{movie.tagline}</p>
           <p className="mt-5 text-lg max-w-xl">{movie.overview}</p>
-          <span className="flex items-center mt-5">
-            <p className="text-xl italic font-semibold">Director: </p>
-            <p className="ml-1 text-xl font-semibold">Steven Speilberg</p>
+          <span className="flex items-center mt-2">
+            <p className="text-xl italic ">Released: </p>
+            <p className="ml-1 text-xl ">{movie.release_date}</p>
+          </span>
+          <span className="flex items-center mt-2">
+            <p className="text-xl italic ">Duration: </p>
+            <p className="ml-1 text-xl ">{movie.runtime} mins</p>
+          </span>
+          <span className="flex items-center mt-2">
+            <p className="text-xl italic ">Budget: </p>
+            <p className="ml-1 text-xl ">${movie.budget}</p>
           </span>
           <span className="flex items-center mt-3">
             <div className="">
@@ -76,21 +85,24 @@ export const MovieInfo = ({ movie }) => {
                 />
               </svg>
             </div>
+            <div className="flex items-center">
             <p className="ml-3 text-xl italic font-semibold">
               {movie.vote_average} ({movie.vote_count})
             </p>
+              <button
+                className="px-4 py-2 text-xs ml-4 rounded-full font-semibold"
+                onClick={() => addToWatchList(movie, isInWatchList)}
+                style={{ background: "#FF5F2C" }}
+              >
+                {isInWatchList ? "REMOVE TO WATCHLIST" : "ADD TO WATCHLIST"}
+              </button>
+            </div>
           </span>
-          <button
-            className="px-4 py-2 text-xs mt-6 rounded-full font-semibold"
-            onClick={() => addToWatchList(movie, isInWatchList)}
-            style={{ background: "#FF5F2C" }}
-          >
-            {isInWatchList ? "REMOVE TO WATCHLIST" : "ADD TO WATCHLIST"}
-          </button>
+
         </div>
       </div>
       {/* end movie info section */}
     </>
   );
-  
+
 };

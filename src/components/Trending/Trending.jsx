@@ -3,6 +3,9 @@ import { getReleaseDate } from "../../helpers/util";
 import Card from "../Card/Card";
 import { Empty } from "../Emplty/Empty";
 
+import Carousel, { Dots } from '@brainhubeu/react-carousel';
+import '@brainhubeu/react-carousel/lib/style.css';
+
 export const Trending = ({ title = "Trending", trending, showMore = false }) => {
     return (
         <>
@@ -33,18 +36,23 @@ export const Trending = ({ title = "Trending", trending, showMore = false }) => 
             <div className="mt-8 max-w-6xl mx-auto">
                 {trending && (
                     <div className="-ml-3 flex justify-between flex-wrap mt-5">
-                        {trending
-                            .map((movie, index) => (
-                                <Card
-                                    key={movie.id}
-                                    id={movie.id}
-                                    name={movie.title}
-                                    image={movie.poster_path}
-                                    vote_average={movie.vote_average}
-                                    popularity={movie.popularity}
-                                    year={getReleaseDate(movie.release_date)}
-                                />
-                            ))}
+                        <Carousel slidesPerPage={5} clickToChange autoPlay={5000}
+                            animationSpeed={1000} infinite>
+                            {trending
+                                .map((movie, index) => (
+                                    <Card
+                                        key={movie.id}
+                                        isCarousel={false}
+                                        id={movie.id}
+                                        name={movie.title}
+                                        image={movie.poster_path}
+                                        vote_average={movie.vote_average}
+                                        popularity={movie.popularity}
+                                        year={getReleaseDate(movie.release_date)}
+                                    />
+                                ))}
+                        </Carousel>
+
                     </div>
                 )}
             </div>

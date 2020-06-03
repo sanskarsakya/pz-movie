@@ -1,42 +1,3 @@
-// import { movieConstants } from '../constants';
-// import { movieService } from '../services';
-
-// export const movieActions = {
-//     getAll,
-//     getById,
-// }
-
-// function getAll(filter, page) {
-//     return dispatch => {
-
-//         dispatch(request());
-
-//         movieService.getAll(filter, page)
-//             .then(
-//                 movies => dispatch(success(movies)),
-//                 error => dispatch(failure(error))
-//             )
-//         function request() { return { type: movieConstants.GETALL_REQUEST } }
-//         function success(movies) { return { type: movieConstants.GETALL_SUCCESS, movies } }
-//         function failure(error) { return { type: movieConstants.GETALL_FAILURE, error } }
-//     }
-// }
-
-// function getById(id) {
-//     return dispatch => {
-
-//         dispatch(request());
-
-//         movieService.getById(id)
-//             .then(
-//                 movie => dispatch(success(movie)),
-//                 error => dispatch(failure(error))
-//             )
-//         function request() { return { type: movieConstants.GET_BY_ID_REQUEST } }
-//         function success(movie) { return { type: movieConstants.GET_BY_ID_SUCCESS, movie } }
-//         function failure(error) { return { type: movieConstants.GET_BY_ID_FAILURE, error } }
-//     }
-// }
 import {
   _getTrending,
   _getMovies,
@@ -66,7 +27,8 @@ function getTrending() {
     dispatch(request());
 
     _getTrending().then(
-      movies => dispatch(success(sliceArray(movies.data.results, 5))),
+      // movies => dispatch(success(sliceArray(movies.data.results, 5))),
+      movies => dispatch(success(movies.data.results)),
       error => dispatch(failure(error))
     );
     function request() {
@@ -146,14 +108,14 @@ function getActors(id) {
     dispatch(request(id));
 
     _getActors(id).then(
-      actors => dispatch(success(actors.data.cast)),
+      response => dispatch(success(response.data)),
       error => dispatch(failure(error))
     );
     function request() {
       return { type: constants.MOVIES_GET_ACTORS_REQUEST };
     }
-    function success(actors) {
-      return { type: constants.MOVIES_GET_ACTORS_SUCCESS, actors };
+    function success(payload) {
+      return { type: constants.MOVIES_GET_ACTORS_SUCCESS, payload };
     }
     function failure(error) {
       return { type: constants.MOVIES_GET_ACTORS_FAILURE, error };

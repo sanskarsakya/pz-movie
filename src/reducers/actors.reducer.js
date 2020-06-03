@@ -3,7 +3,8 @@ import {  constants } from "../constants";
 export const ACTOR_DEFAULT_STATE = {
     loading: false,
     error: "",
-    items: [],
+    casts: [],
+    crews: [],
   };
 
   
@@ -15,7 +16,8 @@ export function actors(state = ACTOR_DEFAULT_STATE, action) {
             };
         case constants.MOVIES_GET_ACTORS_SUCCESS: 
             return {
-                items: action.actors
+                casts: action.payload.cast,
+                crews: action.payload.crew,
             };
         case constants.MOVIES_GET_ACTORS_FAILURE: 
             return {
@@ -25,3 +27,14 @@ export function actors(state = ACTOR_DEFAULT_STATE, action) {
             return state;
     }
 }
+
+/**
+ * cast and crew
+ * movie structure
+ * cast
+ * crew
+ * detail
+ * image
+ * 
+ * is movie loaded ? loadMovieDetail : (loadCnC loadImage LoadRecommendation)
+ */

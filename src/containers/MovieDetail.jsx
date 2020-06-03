@@ -20,7 +20,7 @@ export const MovieDetail = props => {
 
     // SELECTORS
     const movie = useSelector(state => state.movies.item);
-    const actors = useSelector(state => state.actors.items);
+    const {casts, crews} = useSelector(state => state.actors);
     const recommendations = useSelector(state => state.recommendations.items);
 
     // LOCAL STATES
@@ -90,7 +90,8 @@ export const MovieDetail = props => {
 
                             <MovieInfo movie={movie} />
 
-                            <ActorList actors={actors} />
+                            <ActorList label={"cast"} items={casts} />
+                            <ActorList label={"crew"} items={crews} />
 
                             <Recommendation items={recommendations} />
                         </div>

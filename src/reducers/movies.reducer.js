@@ -1,14 +1,23 @@
 
 import { constants } from "../constants/index";
+
 export const MOVIE_DEFAULT_STATE = {
+  detail: {},
+  cast: [],
+  crew: [],
+  images: [],
+}
+
+export const MOVIEs_DEFAULT_STATE = {
   loading: false,
-  error: "",
-  items: [],
-  item: {},
-  text: ""
+  error  : "",
+  items  : [],
+  item   : MOVIE_DEFAULT_STATE,
+  text   : "",
+  pageNo : 1,
 };
 
-export function movies(state = MOVIE_DEFAULT_STATE, action) {
+export function movies(state = MOVIEs_DEFAULT_STATE, action) {
   switch (action.type) {
     case constants.MOVIES_GET_TRENDING_REQUEST:
       return {
