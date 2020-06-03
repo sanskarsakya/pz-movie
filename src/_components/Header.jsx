@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Autocomplete from "./Autocomplete";
 
-import { userActions } from '../_actions';
 
 function Header() {
     const user = useSelector(state => state.authentication.user);

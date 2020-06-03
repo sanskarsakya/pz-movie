@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { actorActions } from '../../../_actions';
+import { actorActions } from '../../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 

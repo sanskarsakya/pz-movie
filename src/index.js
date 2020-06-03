@@ -4,10 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { store } from './_helpers';
+import { store } from './helpers';
 import { Provider } from 'react-redux';
 
-import { configureFakeBackend } from './_helpers';
+import { configureFakeBackend } from './helpers';
 configureFakeBackend();
 
 ReactDOM.render(

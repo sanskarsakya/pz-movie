@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { imageActions } from '../../../_actions';
+import { imageActions } from '../../../actions';
 
 function ImageList(props) {
     const { match } = props;

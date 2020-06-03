@@ -2,31 +2,30 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { movieActions } from '../_actions';
+import { movieActions } from '../actions';
+import { searchActions } from '../actions/search.actions';
+import { MovieList } from "../components/MovieList/MovieList";
 
-function SearchPage() {
-    const movies = useSelector(state => state.movies);
+function SearchPage({match, history}) {
+    const movies = useSelector(state => state.search);
     const dispatch = useDispatch();
 
+
     useEffect(() => {
-        dispatch(movieActions.getAll('', 1));
-    }, [dispatch]);
+        if (movies.text && movies.text.length > 2) {
+            dispatch(searchActions.searchMovie(movies.text, 1));
+        }
+        // if(movies.text < 1){
+        //     history.push(`/movie`);
+        // }
+        // console.log(match.params.keyword)
+    }, [movies.text]);
+
 
     return (
         <div className="col-lg-8 offset-lg-2">
             <h3>All Movie Search:</h3>
-            {movies.loading && <em>Loading movies...</em>}
-            {movies.error && <span className="text-danger">ERROR: {movies.error}</span>}
-            {movies.items &&
-                <ul>
-                    {movies.items.map((movie, index) =>
-                        <li key={movie.id}>
-                            <Link to={'/movie/' + movie.id}>{movie.title}</Link>
-                        </li>
-
-                    )}
-                </ul>
-            }
+            <MovieList title={'Search : ' + movies.text} movies={movies}></MovieList>
         </div>
     );
 }

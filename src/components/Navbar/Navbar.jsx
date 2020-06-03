@@ -1,24 +1,39 @@
 import React from 'react';
-import logo from './logo.png';
 
-import { Link } from "../shared/Link/Link";
-import { Search } from "../shared/Search/Search";
+import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
-function Navbar(props) {
 
-    // style={{boxShadow: '0px 14px 4px rgba(22, 24, 30, 0.25)'}}
+export const Navbar = (props) => {
+
+    const user = useSelector(state => state.authentication.user);
+
+
     return (
-        <div className="w-full px-10 py-3 flex justify-between" style={{ boxShadow: '0 14px 27px #16181e', backgroundColor: '#1E2129' }} >
-            <img className="" style={{ height: 40, width: 138 }} src={logo} alt="" />
-            <div className="flex items-center">
-                <Link text="Home"></Link>
-                <Link text="Login"></Link>
-                <div className="ml-5">
-                    <Search text="Home"></Search>
-                </div>
+        <div className=" w-full px-10 py-3" style={{ boxShadow: '0 14px 27px #16181e', backgroundColor: '#20209A' }} >
+            <div className="flex items-i max-w-6xl mx-auto justify-end">
+                <Link className="mr-3" to={"/movie"}>
+                    <p className="text-white cursor-pointer">Home</p>
+                </Link>
+                {user && (
+                    <>
+                        <Link className="mr-3" to={"/watchlist"}>
+                            <p className="text-white cursor-pointer">watchlist</p>
+                        </Link>
+                        <Link to="/login"> <p className="text-white cursor-pointer">Logout</p></Link>
+                    </>
+                )}
+                {!user && (
+                    <>
+                        <Link to={"/login"}>
+                            <p className="text-white cursor-pointer">Login</p>
+                        </Link>
+                    </>
+                )}
+
+
+
             </div>
         </div>
     );
 }
-
-export { Navbar };

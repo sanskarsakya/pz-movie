@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { movieActions } from '../_actions';
+import { movieActions } from '../actions';
 
 function ProfilePage() {
     const movies = useSelector(state => state.movies);
